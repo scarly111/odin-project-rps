@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin RPS</title>
+</head>
+<body>
+    <script>
+        const choices = ['rock', 'paper', 'scissors']
+
+        const getComputerChoice = () => {
+            return choices[Math.floor(Math.random() * choices.length)]
+        }
+
+        const playerChoice = prompt('rock, paper or scissors')
+
+        const playGame = () => {
+            if(playerChoice === getComputerChoice()) {
+                console.log('Its tie!')
+            } else {
+                console.log('nothing')
+            }
+        }
+
+        playGame()
+    </script>
+</body>
+</html>
