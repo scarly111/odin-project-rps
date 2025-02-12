@@ -7,23 +7,66 @@
 </head>
 <body>
     <script>
+
         const choices = ['rock', 'paper', 'scissors']
 
         const getComputerChoice = () => {
             return choices[Math.floor(Math.random() * choices.length)]
         }
 
-        const playerChoice = prompt('rock, paper or scissors')
+        let playerScore = 0
+        let computerScore = 0
 
-        const playGame = () => {
-            if(playerChoice === getComputerChoice()) {
+        const playGame = (playerChoice, computerChoice) => {
+            if(playerChoice === computerChoice) {
                 console.log('Its tie!')
+            } else if(playerChoice === 'rock' && computerChoice === 'scissors'){
+                console.log('You win')
+                playerScore++
+            } else if (playerChoice === 'scissors' && computerChoice === 'paper'){
+                console.log('You win!')
+                playerScore++
+            } else if (playerChoice === 'paper' && computerChoice === 'rock'){
+                console.log('You win')
+                playerScore++
+            } else if (computerChoice === 'rock' && playerChoice === 'scissors') {
+                console.log('Computer won!')
+                computerScore++
+            } else if  ( computerChoice === 'scissors' && playerChoice === 'paper') {
+                console.log('Computer won!')
+                computerScore++
+            } else if ( computerChoice === 'paper' && playerChoice === 'rock'){
+                console.log('Computer won!')
+                computerScore++
             } else {
-                console.log('nothing')
+                console.log('Please enter a valid value.')
             }
         }
 
-        playGame()
+
+        const playRound = () => {
+            for(let i = 1; i <= 5; i++){
+                let player = prompt('rock, paper or scissors')
+                player = player.toLowerCase()
+                playerSelection = player
+                computerSelection = getComputerChoice()
+                playGame(playerSelection, computerSelection)
+            }
+        }
+        
+        playRound()
+
+        console.log('Computer: ' + computerScore)
+        console.log('Player: ' + playerScore)
+
+        if(playerScore === computerScore){
+            console.log('Its a tie!!!')
+        } else if( playerScore > computerScore) {
+            console.log('Player Wins!')
+        } else if (computerScore < playerScore){
+            console.log('Computer Wins!')
+        }
+
     </script>
 </body>
 </html>
